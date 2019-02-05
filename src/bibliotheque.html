@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--
+    Thème: TP 2 Gestion d’une collection de livres
+    Auteur : Melnyk Svitlana
+    Date : août 2018
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bibliotheque</title>
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+
+<!-- Entête de la page -->
+<header class="py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1><i class="fa fa-book"></i> Bibliothèque</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Corps de la page-->
+
+<!-- Section de boutons -->
+<section class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="javascript:void(0);" class="btn btn-outline-info btn-block shadow-lg" data-toggle="modal" data-target="#ajouterModal">
+                    <i class="fa fa-plus"></i> Ajouter un livre
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="javascript:void(0);" id="voirLivres" class="btn btn-outline-info btn-block shadow-lg">
+                    <i class="fa fa-folder"></i> Voir tous les livres
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section de recherche -->
+<section  class="mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center text-info mb-4">Trouvez votre livre</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th id="nomTitre" scope="col">Titre</th>
+                        <th id="nomAuteur" scope="col">Auteur</th>
+                        <th id="nomAnnee" scope="col">Année</th>
+                        <th id="nomIsbn" scope="col">Isbn</th>
+                        <th id="nomEditeur" scope="col">Éditeur</th>
+                        <th id="nomEvaluation" scope="col">Évaluation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td id="rechercheTitre" contenteditable='true'></td>
+                        <td id="rechercheAuteur" contenteditable='true'></td>
+                        <td id="rechercheAnnee" contenteditable='true'></td>
+                        <td id="rechercheIsbn" contenteditable='true'></td>
+                        <td id="rechercheEditeur" contenteditable='true'></td>
+                        <td id="rechercheEvaluation" contenteditable='true'></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Zone de notification -->
+<section>
+    <div>
+        <h3 class="text-center text-info mb-4" id="notification"></h3>
+    </div>
+</section>
+
+
+<!-- Section d'affichage de livres -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table id="tousLivres" class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Année</th>
+                        <th scope="col">Isbn</th>
+                        <th scope="col">Éditeur</th>
+                        <th scope="col">Évaluation</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pied de la page -->
+<footer class="mt-5 py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="lead text-center">Copyright &copy; 2018 Melnyk</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Section pour l'ajout de livres  -->
+<div class="modal fade" id="ajouterModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title">Ajouter un livre</h5>
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="titre">Titre</label>
+                        <input type="text" id="titre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="auteur">Auteur</label>
+                        <input type="text" id="auteur" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Année</label>
+                        <input type="text" id="annee" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="isbn">Isbn</label>
+                        <input type="text" id="isbn" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="editeur">Éditeur</label>
+                        <input type="text" id="editeur" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="evaluation">Évaluation</label>
+                        <input type="text" id="evaluation" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div><p id="msgErreur"></p></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button class="btn bg-info text-white" data-dismiss="modal" onclick="ajouterLivre()">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/interface.js"></script>
+</body>
+</html>
